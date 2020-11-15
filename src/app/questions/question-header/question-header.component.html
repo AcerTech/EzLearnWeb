@@ -1,0 +1,42 @@
+<form [formGroup]="headerForm" class="form-group row" style="padding: 5px;">
+
+    <div class="col">
+        <label for="subject" class="col col-form-label">Select a Grade</label>
+        <select class="form-control" formControlName="grade" id="grade" (change)="onGradeChange()">
+            <option *ngFor="let g of grades ;i as index;" [ngValue]="g._id">
+                {{g.name}}
+            </option>
+        </select>
+    </div>
+
+
+
+    <div class="col">
+        <label for="subject" class="col col-form-label">Select a Subject</label>
+        <select class="form-control" formControlName="subject" id="subject" (change)="onSubjectChange()">
+            <option *ngFor="let s of subjects ; i as'index'" [ngValue]="s._id">
+                {{s.name}}
+            </option>
+        </select>
+    </div>
+
+    <div class="col">
+        <label for="chapter" class="col col-form-label">Select a Chapter</label>
+        <select class="form-control" formControlName="chapter"  id="chapter"
+            (change)="onChapterChange()">
+            <option *ngFor="let q of chapters" [ngValue]="q._id">
+                {{q.name}}
+            </option>
+        </select>
+    </div>
+
+    <!-- <div class="col">
+        <label for="quiz" class="col col-form-label">Select a Quiz</label>
+        <select class="form-control" formControlName="quiz" id="quiz" (change)="onQuizChange()">
+            <option *ngFor="let q of quizes" [ngValue]="q">
+                {{q.name}}
+            </option>
+        </select>
+    </div> -->
+
+</form>

@@ -1,0 +1,7 @@
+export * from './grade.service'
+export * from './subject-title.service'
+export * from './quizes.service'
+export * from './chapter.service'
+export * from './questions.service'
+export * from './question-type.service'
+export * from './images.service'

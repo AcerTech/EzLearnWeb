@@ -1,0 +1,90 @@
+
+<form *ngIf="errorMsg">
+    <div class="form-row" style="background-color:rgb(240, 15, 27); text-align: center;">
+        <div class="col">
+            <label for="inputEmail3" style="background-color:rgb(240, 15, 27); text-align: center;color: white;" class="col col-form-label">{{errorMsg}}</label>
+        </div>
+    </div>
+</form>
+
+<div class="row" style="text-align: center;background-color: blanchedalmond;">
+    <div class="col">
+        <!-- <app-question-header (notifyHeaderChange)="onHeaderChange($event)"></app-question-header> -->
+    </div>
+
+</div>
+
+<div class="row">
+    
+
+    <div class="col col-lg-6"
+        style="text-align: center;border-left-style: solid;border-color: lightgoldenrodyellow;border-right-style: solid;border-color: lightgoldenrodyellow;">
+        <!-- <app-question-entry [selectedQuestion]="_selectedQuestion" (notifyQuestionSubmit)="onQuestionSubmit($event)"
+            (notifyQuestionClear)="onQuestionFormClear($event)" (notifyQuestionDelete)="onQuestionDelete($event)"></app-question-entry> -->
+        <div class="row" style="text-align: center;border-top-style: solid;border-color: lightgray;">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus"></i> Add Answer
+            </button>
+        </div>
+        <div class="col" style="text-align: center;line-height: 0.5;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Question Text</th>
+                        <th scope="col">Display Ordert</th>
+                        <th scope="col">Image Url</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of answers; index as i"
+                        [ngStyle]="{'background-color': a.isCorrect? 'lightgreen' : (style2 ? 'blue' : null) }">
+                        <th>{{i+1}}</th>
+                        <td>{{a.answerText}}</td>
+                        <td>{{a.displayOrder}}</td>
+                        <td>{{a.imgUrl}}</td>
+                        <!-- <td>{{a.isCorrect}}</td> -->
+                        <td>
+                            <button style="padding: 0,0,0,0;" class="btn btn-danger btn-sm"  (click)="deleteAnswer(a)">
+                                <i class="fa fa-close"></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <div class="col col-lg-6" style="text-align: center;">
+        <!-- <app-question-list [chapterInfo]="chapterInfo" (notifyQuestionSelected)="questionSelectedChange($event)"> -->
+        <!-- </app-question-list> -->
+    </div>
+    <!-- <div class="col col-lg-4" style="text-align: center;">
+        Mobile View
+    </div> -->
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Answer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-answer-entry (notifyAnswerAdded)="onAnswerAdded($event)"></app-answer-entry>
+            </div>
+            <!-- footer will be in the answer component -->
+        </div>
+    </div>
+</div>
